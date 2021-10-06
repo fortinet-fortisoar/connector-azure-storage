@@ -1,0 +1,1198 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - Azure Storage - 1.0.0",
+      "description": "Sample playbooks for \"Azure Storage\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": "/api/3/images/53fff9f8-cb59-48d8-8427-77455c643b60",
+      "uuid": "fff6a2aa-5021-4b6c-8350-58f5e068eac8",
+      "id": 410,
+      "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+      "createDate": 1632729416,
+      "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+      "modifyDate": 1632729416,
+      "recordTags": [],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "List Storage Accounts",
+          "aliasName": null,
+          "tag": "#azure-storage",
+          "description": "Retrieves the list of storage accounts from Azure Storage based on the input parameters you have specified.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1631705874,
+          "collection": "/api/3/workflow_collections/fff6a2aa-5021-4b6c-8350-58f5e068eac8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/b2468484-1f96-4c99-8a04-b8784dd5c446",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "List Storage Accounts",
+              "description": null,
+              "arguments": {
+                "name": "Azure Storage",
+                "config": "",
+                "params": {
+                  "subscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage",
+                "operation": "list_storage_accounts",
+                "operationTitle": "List Storage Accounts",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "020d0e6d-7da6-4b12-901e-a757f26ea83c",
+              "id": 12159
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "0b5327b8-227b-4176-9b12-1fbc55a97760",
+                "title": "Azure Storage: List Storage Accounts",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "b2468484-1f96-4c99-8a04-b8784dd5c446",
+              "id": 12160
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> List Storage Accounts",
+              "targetStep": "/api/3/workflow_steps/020d0e6d-7da6-4b12-901e-a757f26ea83c",
+              "sourceStep": "/api/3/workflow_steps/b2468484-1f96-4c99-8a04-b8784dd5c446",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "7ec20f4c-caae-40aa-abb5-651396ea1ff2"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "0c8c9413-311b-49de-a189-110084576302",
+          "recordTags": [
+            "Microsoft",
+            "azure-storage"
+          ],
+          "id": 4109,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1632729416,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1632729416,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update Storage Account",
+          "aliasName": null,
+          "tag": "#azure-storage",
+          "description": "Updates a existing storage account in Azure Storage, based on the input parameters you have specified.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1631706069,
+          "collection": "/api/3/workflow_collections/fff6a2aa-5021-4b6c-8350-58f5e068eac8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/34b329bf-2caf-4048-811b-bc1740892aff",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "da64ed85-489a-455e-aff8-658ccea4bdb5",
+                "title": "Azure Storage: Update Storage Account",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "34b329bf-2caf-4048-811b-bc1740892aff",
+              "id": 12161
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Storage Account",
+              "description": null,
+              "arguments": {
+                "name": "Azure Storage",
+                "config": "",
+                "params": {
+                  "accountName": "storage1",
+                  "subscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040",
+                  "additional_fields": "",
+                  "resourceGroupName": "fortinet-baner"
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage",
+                "operation": "update_storage_account",
+                "operationTitle": "Update Storage Account",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "6effa5f2-e422-4ef6-ae5c-f213cd150603",
+              "id": 12162
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Update Storage Account",
+              "targetStep": "/api/3/workflow_steps/6effa5f2-e422-4ef6-ae5c-f213cd150603",
+              "sourceStep": "/api/3/workflow_steps/34b329bf-2caf-4048-811b-bc1740892aff",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "e5855a31-9fe1-45f1-b16b-5c19da130905"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "106653ca-bd3f-4d3c-b8c6-c72045671cee",
+          "recordTags": [
+            "Microsoft",
+            "azure-storage"
+          ],
+          "id": 4110,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1632729416,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1632729416,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Delete Storage Account",
+          "aliasName": null,
+          "tag": "#azure-storage",
+          "description": "Deletes a specific storage account from Azure Storage, based on the account name and other input parameters you have specified.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1631706153,
+          "collection": "/api/3/workflow_collections/fff6a2aa-5021-4b6c-8350-58f5e068eac8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/8a6639a4-40b9-4b0b-9b4c-a6e13e3f9275",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Delete Storage Account",
+              "description": null,
+              "arguments": {
+                "name": "Azure Storage",
+                "config": "",
+                "params": {
+                  "accountName": "storage1",
+                  "subscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040",
+                  "resourceGroupName": "fortinet-baner"
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage",
+                "operation": "delete_storage_account",
+                "operationTitle": "Delete Storage Account",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "85e2effb-5557-49c3-9451-8ad2cbfd96f7",
+              "id": 12163
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "09acc290-efb0-4892-bd70-b27c4c879348",
+                "title": "Azure Storage: Delete Storage Account",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "8a6639a4-40b9-4b0b-9b4c-a6e13e3f9275",
+              "id": 12164
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Delete Storage Account",
+              "targetStep": "/api/3/workflow_steps/85e2effb-5557-49c3-9451-8ad2cbfd96f7",
+              "sourceStep": "/api/3/workflow_steps/8a6639a4-40b9-4b0b-9b4c-a6e13e3f9275",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "bd5e8a8b-e3f8-4e2a-b16f-9d5944ddaed1"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "2e141762-3bf6-4b0f-aac1-4840ee403fc0",
+          "recordTags": [
+            "Microsoft",
+            "azure-storage"
+          ],
+          "id": 4111,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1632729416,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1632729416,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Set Blob Service Properties",
+          "aliasName": null,
+          "tag": "#azure-storage",
+          "description": "Sets the properties of a storage account’s Blob service in Azure Storage, based on the account name, blob service name and other input parameters you have specified.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1631706463,
+          "collection": "/api/3/workflow_collections/fff6a2aa-5021-4b6c-8350-58f5e068eac8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/dbe109dd-190d-4351-aca3-3e1a21ba7d5b",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Set Blob Service Properties",
+              "description": null,
+              "arguments": {
+                "name": "Azure Storage",
+                "config": "",
+                "params": {
+                  "accountName": "storage1",
+                  "subscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040",
+                  "additional_fields": "",
+                  "resourceGroupName": "fortinet-baner"
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage",
+                "operation": "set_blob_service_properties",
+                "operationTitle": "Set Blob Service Properties",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "76d8cf82-e516-4ad9-83c9-448093bd969a",
+              "id": 12165
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "65584b72-c03d-45c9-91e5-9872f933d147",
+                "title": "Azure Storage: Set Blob Service Properties",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "dbe109dd-190d-4351-aca3-3e1a21ba7d5b",
+              "id": 12166
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Set Blob Service Properties",
+              "targetStep": "/api/3/workflow_steps/76d8cf82-e516-4ad9-83c9-448093bd969a",
+              "sourceStep": "/api/3/workflow_steps/dbe109dd-190d-4351-aca3-3e1a21ba7d5b",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "414f1c4e-d97c-4249-a74d-cf9373b7b663"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "44365920-f8a2-4b4f-8789-81089ab33036",
+          "recordTags": [
+            "Microsoft",
+            "azure-storage"
+          ],
+          "id": 4112,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1632729416,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1632729416,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "List Blob Services",
+          "aliasName": null,
+          "tag": "#azure-storage",
+          "description": "Retrieves the list of blob services from Azure Storage based on the account name and other input parameters you have specified.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1631706239,
+          "collection": "/api/3/workflow_collections/fff6a2aa-5021-4b6c-8350-58f5e068eac8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/f219a0e1-0c4a-44b7-ac08-6700fbdaf8c9",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "List Blob Services",
+              "description": null,
+              "arguments": {
+                "name": "Azure Storage",
+                "config": "",
+                "params": {
+                  "accountName": "storage1",
+                  "subscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040",
+                  "resourceGroupName": "fortinet-baner"
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage",
+                "operation": "list_blob_services",
+                "operationTitle": "List Blob Services",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "a82d2440-5fc4-49e5-ac00-489325284764",
+              "id": 12167
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "75358672-8ebe-45fc-a9c7-095b85eaa9e4",
+                "title": "Azure Storage: List Blob Services",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "f219a0e1-0c4a-44b7-ac08-6700fbdaf8c9",
+              "id": 12168
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> List Blob Services",
+              "targetStep": "/api/3/workflow_steps/a82d2440-5fc4-49e5-ac00-489325284764",
+              "sourceStep": "/api/3/workflow_steps/f219a0e1-0c4a-44b7-ac08-6700fbdaf8c9",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "04c94e2d-55be-4d1b-bb95-41a880b6eff3"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "45fde221-5327-48b6-8c1c-4ce1dfcde024",
+          "recordTags": [
+            "Microsoft",
+            "azure-storage"
+          ],
+          "id": 4113,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1632729416,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1632729416,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "List Blob Containers",
+          "aliasName": null,
+          "tag": "#azure-storage",
+          "description": "Retrieves the list of blob containers from Azure Storage based on the account name and other input parameters you have specified.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1631706683,
+          "collection": "/api/3/workflow_collections/fff6a2aa-5021-4b6c-8350-58f5e068eac8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/9ab47eb0-c899-465e-954c-9985e5e419a8",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "5a7ebe00-1c66-42a6-a767-5675e227ff22",
+                "title": "Azure Storage: List Blob Containers",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "9ab47eb0-c899-465e-954c-9985e5e419a8",
+              "id": 12169
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "List Blob Containers",
+              "description": null,
+              "arguments": {
+                "name": "Azure Storage",
+                "config": "",
+                "params": {
+                  "$filter": "",
+                  "$include": "",
+                  "accountName": "storage1",
+                  "$maxpagesize": "",
+                  "subscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040",
+                  "resourceGroupName": "fortinet-baner"
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage",
+                "operation": "list_blob_containers",
+                "operationTitle": "List Blob Containers",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "9de36af4-f351-4e09-a606-b3ae34b56c3d",
+              "id": 12170
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> List Blob Containers",
+              "targetStep": "/api/3/workflow_steps/9de36af4-f351-4e09-a606-b3ae34b56c3d",
+              "sourceStep": "/api/3/workflow_steps/9ab47eb0-c899-465e-954c-9985e5e419a8",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "33bafc07-d7e1-4f8e-a4d5-6e1b20316005"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "5342ffb4-627c-4d5f-8dda-61a3dfc09842",
+          "recordTags": [
+            "Microsoft",
+            "azure-storage"
+          ],
+          "id": 4114,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1632729416,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1632729416,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update Blob Container",
+          "aliasName": null,
+          "tag": "#azure-storage",
+          "description": "Updates an existing blob container under the specified account in Azure Storage, based on the account name, container name and other input parameters you have specified.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1631706886,
+          "collection": "/api/3/workflow_collections/fff6a2aa-5021-4b6c-8350-58f5e068eac8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/5b06b2cd-2e05-4dac-8bb6-f047a5134439",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "4f27d7d6-4fcd-4348-8ef8-00d91422bb9b",
+                "title": "Azure Storage: Update Blob Container",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "5b06b2cd-2e05-4dac-8bb6-f047a5134439",
+              "id": 12171
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Blob Container",
+              "description": null,
+              "arguments": {
+                "name": "Azure Storage",
+                "config": "",
+                "params": {
+                  "accountName": "storage1",
+                  "containerName": "container1",
+                  "subscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040",
+                  "additional_fields": "",
+                  "resourceGroupName": "fortinet-baner"
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage",
+                "operation": "update_blob_container",
+                "operationTitle": "Update Blob Container",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "f91beb34-308d-412a-bfdd-cf1ed147e2dd",
+              "id": 12172
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Update Blob Container",
+              "targetStep": "/api/3/workflow_steps/f91beb34-308d-412a-bfdd-cf1ed147e2dd",
+              "sourceStep": "/api/3/workflow_steps/5b06b2cd-2e05-4dac-8bb6-f047a5134439",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "785e1df1-b6ac-4c51-a650-43caee6fb965"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "57c4f346-74de-457e-af26-65a3c8deec2f",
+          "recordTags": [
+            "Microsoft",
+            "azure-storage"
+          ],
+          "id": 4115,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1632729416,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1632729416,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Blob Container",
+          "aliasName": null,
+          "tag": "#azure-storage",
+          "description": "Retrieves information for a specific blob container from Azure Storage, based on the account name, container name and other input parameters you have specified.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1631706776,
+          "collection": "/api/3/workflow_collections/fff6a2aa-5021-4b6c-8350-58f5e068eac8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/f3fba562-2f26-4e37-9f92-eb3a87b6b84e",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Blob Container",
+              "description": null,
+              "arguments": {
+                "name": "Azure Storage",
+                "config": "",
+                "params": {
+                  "accountName": "storage1",
+                  "containerName": "container1",
+                  "subscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040",
+                  "resourceGroupName": "fortinet-baner"
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage",
+                "operation": "get_blob_container",
+                "operationTitle": "Get Blob Container",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "34b65445-9819-4b3e-ba3f-18e6dacc0ab5",
+              "id": 12173
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "6331bdc5-4a1a-4aae-b6ce-1d10fb44a3c0",
+                "title": "Azure Storage: Get Blob Container",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "f3fba562-2f26-4e37-9f92-eb3a87b6b84e",
+              "id": 12174
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Blob Container",
+              "targetStep": "/api/3/workflow_steps/34b65445-9819-4b3e-ba3f-18e6dacc0ab5",
+              "sourceStep": "/api/3/workflow_steps/f3fba562-2f26-4e37-9f92-eb3a87b6b84e",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "4a14873f-bfe7-4122-ae9f-01cab4477232"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "72c244fe-f50b-4ef4-a184-daf78e0a5f2a",
+          "recordTags": [
+            "Microsoft",
+            "azure-storage"
+          ],
+          "id": 4116,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1632729416,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1632729416,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Storage Account",
+          "aliasName": null,
+          "tag": "#azure-storage",
+          "description": "Retrieves information for a specific storage account from Azure Storage, based on the account name and other input parameters you have specified.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1631705981,
+          "collection": "/api/3/workflow_collections/fff6a2aa-5021-4b6c-8350-58f5e068eac8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/fe132cce-c697-48a9-bf9a-54e79ddec500",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Storage Account",
+              "description": null,
+              "arguments": {
+                "name": "Azure Storage",
+                "config": "",
+                "params": {
+                  "accountName": "storage1",
+                  "subscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040",
+                  "resourceGroupName": "fortinet-baner"
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage",
+                "operation": "get_storage_account",
+                "operationTitle": "Get Storage Account",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "757a973c-6d37-44dc-8af1-a4456892dcad",
+              "id": 12175
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "1481156d-8605-44ae-8dbc-0de4e96d9cbe",
+                "title": "Azure Storage: Get Storage Account",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "fe132cce-c697-48a9-bf9a-54e79ddec500",
+              "id": 12176
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Storage Account",
+              "targetStep": "/api/3/workflow_steps/757a973c-6d37-44dc-8af1-a4456892dcad",
+              "sourceStep": "/api/3/workflow_steps/fe132cce-c697-48a9-bf9a-54e79ddec500",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "59097f04-ca81-4295-8105-821124e8f296"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "8484d0d0-9256-4fba-afdf-b98a481d2e03",
+          "recordTags": [
+            "Microsoft",
+            "azure-storage"
+          ],
+          "id": 4117,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1632729416,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1632729416,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Delete Blob Container",
+          "aliasName": null,
+          "tag": "#azure-storage",
+          "description": "Deletes a specific blob container from Azure Storage, based on the account name, container name and other input parameters you have specified.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1631706991,
+          "collection": "/api/3/workflow_collections/fff6a2aa-5021-4b6c-8350-58f5e068eac8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/f12280f6-5741-4412-80d6-59a4d55f8e5c",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Delete Blob Container",
+              "description": null,
+              "arguments": {
+                "name": "Azure Storage",
+                "config": "",
+                "params": {
+                  "accountName": "storage1",
+                  "containerName": "container1",
+                  "subscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040",
+                  "resourceGroupName": "fortinet-baner"
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage",
+                "operation": "delete_blob_container",
+                "operationTitle": "Delete Blob Container",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "a7405fbb-1211-4379-9871-bb4e0f586c30",
+              "id": 12177
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "84207bba-84af-4a24-b173-b2477691c3d8",
+                "title": "Azure Storage: Delete Blob Container",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "f12280f6-5741-4412-80d6-59a4d55f8e5c",
+              "id": 12178
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Delete Blob Container",
+              "targetStep": "/api/3/workflow_steps/a7405fbb-1211-4379-9871-bb4e0f586c30",
+              "sourceStep": "/api/3/workflow_steps/f12280f6-5741-4412-80d6-59a4d55f8e5c",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "0137a21a-c280-47bd-87a5-b744996451b4"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "98679e78-7690-43f0-9577-ca6e4b854ac1",
+          "recordTags": [
+            "Microsoft",
+            "azure-storage"
+          ],
+          "id": 4118,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1632729416,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1632729416,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Blob Service Properties",
+          "aliasName": null,
+          "tag": "#azure-storage",
+          "description": "Retrieves information for a specific blob service properties from Azure Storage, based on the account name, blob service name and other input parameters you have specified.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1631706359,
+          "collection": "/api/3/workflow_collections/fff6a2aa-5021-4b6c-8350-58f5e068eac8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/7b75bfb9-0f81-4ac4-91d5-87f4ce86cb57",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Blob Service Properties",
+              "description": null,
+              "arguments": {
+                "name": "Azure Storage",
+                "config": "",
+                "params": {
+                  "accountName": "storage1",
+                  "subscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040",
+                  "resourceGroupName": "fortinet-baner"
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage",
+                "operation": "get_blob_service_properties",
+                "operationTitle": "Get Blob Service Properties",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "37ae310b-149d-4080-bfa9-ef14488bbd30",
+              "id": 12179
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "52bc058a-3441-4447-8a57-ca4874a22935",
+                "title": "Azure Storage: Get Blob Service Properties",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "7b75bfb9-0f81-4ac4-91d5-87f4ce86cb57",
+              "id": 12180
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Blob Service Properties",
+              "targetStep": "/api/3/workflow_steps/37ae310b-149d-4080-bfa9-ef14488bbd30",
+              "sourceStep": "/api/3/workflow_steps/7b75bfb9-0f81-4ac4-91d5-87f4ce86cb57",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "1ec2b2bc-2b4b-46eb-9a77-98ba1d4325de"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "d1cd4178-6eee-4c4f-ab4d-1245e4404020",
+          "recordTags": [
+            "Microsoft",
+            "azure-storage"
+          ],
+          "id": 4119,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1632729416,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1632729416,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Create Blob Container",
+          "aliasName": null,
+          "tag": "#azure-storage",
+          "description": "Creates a blob container under the specified account in Azure Storage, based on the account name, container name and other input parameters you have specified.",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1631706574,
+          "collection": "/api/3/workflow_collections/fff6a2aa-5021-4b6c-8350-58f5e068eac8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/1a22344c-6ae4-45e7-ab74-c8fdcc78577c",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "9b4d7a4c-4514-4d12-b1c4-126695a16bbe",
+                "title": "Azure Storage: Create Blob Container",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "1a22344c-6ae4-45e7-ab74-c8fdcc78577c",
+              "id": 12181
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Blob Container",
+              "description": null,
+              "arguments": {
+                "name": "Azure Storage",
+                "config": "",
+                "params": {
+                  "accountName": "storage1",
+                  "containerName": "container1",
+                  "subscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040",
+                  "additional_fields": "",
+                  "resourceGroupName": "fortinet-baner"
+                },
+                "version": "1.0.0",
+                "connector": "azure-storage",
+                "operation": "create_blob_container",
+                "operationTitle": "Create Blob Container",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "3c8832f3-244b-4f6c-b90c-55a254a72164",
+              "id": 12182
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Create Blob Container",
+              "targetStep": "/api/3/workflow_steps/3c8832f3-244b-4f6c-b90c-55a254a72164",
+              "sourceStep": "/api/3/workflow_steps/1a22344c-6ae4-45e7-ab74-c8fdcc78577c",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "cddf575f-c6d3-4bf6-95af-aa03f96f4409"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "dda2abfe-3c6e-40f2-9a64-7354094c6226",
+          "recordTags": [
+            "Microsoft",
+            "azure-storage"
+          ],
+          "id": 4120,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1632729416,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1632729416,
+          "owners": [],
+          "isPrivate": false
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "Microsoft",
+    "azure-storage"
+  ]
+}

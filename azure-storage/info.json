@@ -1,0 +1,976 @@
+{
+  "description": "Deploy and manage storage accounts and blob services. This connector facilitates the automated operations related to storage account, blob services and blob containers.",
+  "category": "IT Services",
+  "name": "azure-storage",
+  "label": "Azure Storage",
+  "version": "1.0.0",
+  "publisher": "Community",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "resource",
+        "value": "https://graph.microsoft.com",
+        "description": "The service-based URI to which you will connect and perform the automated operations."
+      },
+      {
+        "title": "Client ID",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "client_id",
+        "description": "Unique API ID of the Azure Active Directory application that is used to create an authentication token required to access the API."
+      },
+      {
+        "title": "Client Secret",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "name": "client_secret",
+        "description": "Unique API Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see 'https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp'."
+      },
+      {
+        "title": "Tenant ID",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "tenant_id",
+        "description": "ID of the tenant that you have been provided for your Azure Active Directory instance."
+      },
+      {
+        "title": "Authorization Code",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "name": "code",
+        "tooltip": "Authorization code that you acquired in the authorization step.",
+        "description": "(Only Applicable to On behalf of User – Delegate Permission) The authorization code that you acquired during the authorization step. For more information, see the Getting Access Tokens using the Delegate Permissions method section."
+      },
+      {
+        "title": "Redirect URL",
+        "description": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri's you registered in the app registration portal.",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "redirect_url",
+        "placeholder": "E.g. https://localhost/myapp",
+        "tooltip": "(Only Applicable to On behalf of User – Delegate Permission) The redirect_uri of your app, where authentication responses can be sent and received by your app. The redirect URL that you specify here must exactly match one of the redirect_uri's you have registered in your app registration portal."
+      },
+      {
+        "title": "Verify SSL",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "name": "verify_ssl",
+        "value": true,
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "title": "List Storage Accounts",
+      "operation": "list_storage_accounts",
+      "description": "Retrieves the list of storage accounts from Azure Storage based on the input parameters you have specified.",
+      "category": "investigation ",
+      "annotation": "list_storage_accounts",
+      "parameters": [
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the storage accounts from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "subscriptionId"
+        }
+      ],
+      "output_schema": {
+        "value": [
+          {
+            "id": "",
+            "kind": "",
+            "location": "",
+            "name": "",
+            "properties": {
+              "isHnsEnabled": "",
+              "creationTime": "",
+              "primaryEndpoints": {
+                "web": "",
+                "dfs": "",
+                "blob": "",
+                "file": "",
+                "queue": "",
+                "table": "",
+                "microsoftEndpoints": {
+                  "web": "",
+                  "dfs": "",
+                  "blob": "",
+                  "file": "",
+                  "queue": "",
+                  "table": ""
+                },
+                "internetEndpoints": {
+                  "web": "",
+                  "dfs": "",
+                  "blob": "",
+                  "file": ""
+                }
+              },
+              "primaryLocation": "",
+              "provisioningState": "",
+              "routingPreference": {
+                "routingChoice": "",
+                "publishMicrosoftEndpoints": "",
+                "publishInternetEndpoints": ""
+              },
+              "encryption": {
+                "services": {
+                  "file": {
+                    "keyType": "",
+                    "enabled": "",
+                    "lastEnabledTime": ""
+                  },
+                  "blob": {
+                    "keyType": "",
+                    "enabled": "",
+                    "lastEnabledTime": ""
+                  }
+                },
+                "keySource": ""
+              },
+              "secondaryLocation": "",
+              "statusOfPrimary": "",
+              "statusOfSecondary": "",
+              "supportsHttpsTrafficOnly": ""
+            },
+            "sku": {
+            },
+            "tags": {
+            },
+            "type": ""
+          }
+        ]
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get Storage Account",
+      "operation": "get_storage_account",
+      "description": "Retrieves information for a specific storage account from Azure Storage, based on the account name and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "get_storage_account",
+      "parameters": [
+        {
+          "title": "Account Name",
+          "description": "Name of the account from which you want to retrieve the storage account from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "accountName"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the storage account from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "resourceGroupName"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the storage account from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "subscriptionId"
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "kind": "",
+        "location": "",
+        "name": "",
+        "properties": {
+          "keyCreationTime": {
+          },
+          "geoReplicationStats": {
+            "status": "",
+            "lastSyncTime": "",
+            "canFailover": ""
+          },
+          "isHnsEnabled": "",
+          "creationTime": "",
+          "networkAcls": {
+            "bypass": "",
+            "defaultAction": "",
+            "ipRules": [],
+            "virtualNetworkRules": [],
+            "resourceAccessRules": [
+              {
+                "tenantId": "",
+                "resourceId": ""
+              }
+            ]
+          },
+          "primaryEndpoints": {
+            "web": "",
+            "dfs": "",
+            "blob": "",
+            "file": "",
+            "queue": "",
+            "table": "",
+            "microsoftEndpoints": {
+              "web": "",
+              "dfs": "",
+              "blob": "",
+              "file": "",
+              "queue": "",
+              "table": ""
+            },
+            "internetEndpoints": {
+              "web": "",
+              "dfs": "",
+              "blob": "",
+              "file": ""
+            }
+          },
+          "primaryLocation": "",
+          "provisioningState": "",
+          "routingPreference": {
+            "routingChoice": "",
+            "publishMicrosoftEndpoints": "",
+            "publishInternetEndpoints": ""
+          },
+          "encryption": {
+            "services": {
+              "file": {
+                "keyType": "",
+                "enabled": "",
+                "lastEnabledTime": ""
+              },
+              "blob": {
+                "keyType": "",
+                "enabled": "",
+                "lastEnabledTime": ""
+              }
+            },
+            "keySource": ""
+          },
+          "secondaryLocation": "",
+          "statusOfPrimary": "",
+          "statusOfSecondary": "",
+          "supportsHttpsTrafficOnly": ""
+        },
+        "sku": {
+        },
+        "tags": {
+        },
+        "type": ""
+      },
+      "enabled": true
+    },
+    {
+      "title": "Update Storage Account",
+      "operation": "update_storage_account",
+      "description": "Updates a existing storage account in Azure Storage, based on the input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "update_storage_account",
+      "parameters": [
+        {
+          "title": "Account Name",
+          "description": "Name of the account from which you want to update a storage account in Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "accountName"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to update a storage account in Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "resourceGroupName"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to update a storage account in Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "subscriptionId"
+        },
+        {
+          "title": "Additional Fields",
+          "name": "additional_fields",
+          "type": "json",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "(Optional) Additional fields that you want to update storage account in Azure Storage.",
+          "description": "(Optional) Additional fields that you want to update storage in Azure Storage."
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "kind": "",
+        "location": "",
+        "name": "",
+        "properties": {
+          "creationTime": "",
+          "azureFilesIdentityBasedAuthentication": {
+            "directoryServiceOptions": "",
+            "activeDirectoryProperties": {
+              "domainName": "",
+              "netBiosDomainName": "",
+              "forestName": "",
+              "domainGuid": "",
+              "domainSid": "",
+              "azureStorageSid": ""
+            }
+          },
+          "primaryEndpoints": {
+            "web": "",
+            "dfs": "",
+            "blob": "",
+            "file": "",
+            "queue": "",
+            "table": ""
+          },
+          "primaryLocation": "",
+          "provisioningState": "",
+          "secondaryLocation": "",
+          "statusOfPrimary": "",
+          "statusOfSecondary": "",
+          "supportsHttpsTrafficOnly": ""
+        },
+        "sku": {
+        },
+        "tags": {
+        },
+        "type": ""
+      },
+      "enabled": true
+    },
+    {
+      "title": "Delete Storage Account",
+      "operation": "delete_storage_account",
+      "description": "Deletes a specific storage account from Azure Storage, based on the account name and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "delete_storage_account",
+      "parameters": [
+        {
+          "title": "Account Name",
+          "description": "Name of the account from which you want to delete the storage account from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "accountName"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to delete the storage account from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "resourceGroupName"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to delete the storage account from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "subscriptionId"
+        }
+      ],
+      "output_schema": {
+        "result": ""
+      },
+      "enabled": true
+    },
+    {
+      "title": "List Blob Services",
+      "operation": "list_blob_services",
+      "description": "Retrieves the list of blob services from Azure Storage based on the account name and other input parameters you have specified.",
+      "category": "investigation ",
+      "annotation": "list_blob_services",
+      "parameters": [
+        {
+          "title": "Account Name",
+          "description": "Name of the account from which you want to retrieve the blob services from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "accountName"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the blob services from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "resourceGroupName"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the blob services from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "subscriptionId"
+        }
+      ],
+      "output_schema": {
+        "value": [
+          {
+            "id": "",
+            "name": "",
+            "type": "",
+            "properties": {
+              "cors": {
+                "corsRules": [
+                  {
+                    "allowedOrigins": [
+                    ],
+                    "allowedMethods": [
+                    ],
+                    "maxAgeInSeconds": "",
+                    "exposedHeaders": [
+                    ],
+                    "allowedHeaders": [
+                    ]
+                  }
+                ]
+              },
+              "defaultServiceVersion": "",
+              "deleteRetentionPolicy": {
+                "enabled": "",
+                "days": ""
+              },
+              "isVersioningEnabled": "",
+              "changeFeed": {
+                "enabled": "",
+                "retentionInDays": ""
+              }
+            },
+            "sku": {
+            }
+          }
+        ]
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get Blob Service Properties",
+      "operation": "get_blob_service_properties",
+      "description": "Retrieves information for a specific blob service properties from Azure Storage, based on the account name, blob service name and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "get_blob_service_properties",
+      "parameters": [
+        {
+          "title": "Account Name",
+          "description": "Name of the account from which you want to retrieve the blob service properties from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "accountName"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the blob service properties from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "resourceGroupName"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the blob service properties from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "subscriptionId"
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "type": "",
+        "properties": {
+          "cors": {
+            "corsRules": [
+              {
+                "allowedOrigins": [
+                ],
+                "allowedMethods": [
+                ],
+                "maxAgeInSeconds": "",
+                "exposedHeaders": [
+                ],
+                "allowedHeaders": [
+                ]
+              }
+            ]
+          },
+          "defaultServiceVersion": "",
+          "deleteRetentionPolicy": {
+            "enabled": "",
+            "days": ""
+          },
+          "isVersioningEnabled": "",
+          "changeFeed": {
+            "enabled": "",
+            "retentionInDays": ""
+          }
+        },
+        "sku": {
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Set Blob Service Properties",
+      "operation": "set_blob_service_properties",
+      "description": "Sets the properties of a storage account’s Blob service in Azure Storage, based on the account name, blob service name and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "set_blob_service_properties",
+      "parameters": [
+        {
+          "title": "Account Name",
+          "description": "Name of the account from which you want to set the blob service properties in Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "accountName"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to set the blob service properties in Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "resourceGroupName"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to set the blob service properties in Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "subscriptionId"
+        },
+        {
+          "title": "Additional Fields",
+          "name": "additional_fields",
+          "type": "json",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "(Optional) Additional fields that you want to set the blob services properties in Azure Storage.",
+          "description": "(Optional) Additional fields that you want to set the blob services properties in Azure Storage."
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "type": "",
+        "properties": {
+          "lastAccessTimeTrackingPolicy": {
+            "enable": "",
+            "name": "",
+            "trackingGranularityInDays": "",
+            "blobType": [
+            ]
+          }
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Create Blob Container",
+      "operation": "create_blob_container",
+      "description": "Creates a blob container under the specified account in Azure Storage, based on the account name, container name and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "create_blob_container",
+      "parameters": [
+        {
+          "title": "Account Name",
+          "description": "Name of the account from which you want to create a blob container in Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "accountName"
+        },
+        {
+          "title": "Container Name",
+          "description": "Name of the container from which you want to create a blob container in Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "containerName"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to create a blob container in Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "resourceGroupName"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to create a blob container in Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "subscriptionId"
+        },
+        {
+          "title": "Additional Fields",
+          "name": "additional_fields",
+          "type": "json",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "(Optional) Additional fields that you want to create blob container in Azure Log Analytics.",
+          "description": "(Optional) Additional fields that you want to create blob container in Azure Log Analytics."
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "type": ""
+      },
+      "enabled": true
+    },
+    {
+      "title": "List Blob Containers",
+      "operation": "list_blob_containers",
+      "description": "Retrieves the list of blob containers from Azure Storage based on the account name and other input parameters you have specified.",
+      "category": "investigation ",
+      "annotation": "list_blob_containers",
+      "parameters": [
+        {
+          "title": "Account Name",
+          "description": "Name of the account from which you want to retrieve the blob containers from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "accountName"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the blob containers from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "resourceGroupName"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the blob containers from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "subscriptionId"
+        },
+        {
+          "title": "Search Query",
+          "description": "(Optional) When specified, only container names starting with the filter will be listed.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "$filter"
+        },
+        {
+          "title": "Include",
+          "description": "(Optional) Include the properties for soft deleted blob containers.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "$include",
+          "placeholder": "deleted"
+        },
+        {
+          "title": "Page Size",
+          "description": "(Optional) Maximum number of blob containers that this operation should return from Azure Storage.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "$maxpagesize",
+          "tooltip": "(Optional) Maximum number of blob containers that this operation should return from Azure Storage."
+        }
+      ],
+      "output_schema": {
+        "value": [
+          {
+            "id": "",
+            "name": "",
+            "type": "",
+            "etag": "",
+            "properties": {
+              "publicAccess": "",
+              "leaseStatus": "",
+              "leaseState": "",
+              "lastModifiedTime": "",
+              "hasImmutabilityPolicy": "",
+              "hasLegalHold": ""
+            }
+          }
+        ],
+        "nextLink": ""
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get Blob Container",
+      "operation": "get_blob_container",
+      "description": "Retrieves information for a specific blob container from Azure Storage, based on the account name, container name and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "get_blob_container",
+      "parameters": [
+        {
+          "title": "Account Name",
+          "description": "Name of the account from which you want to retrieve the blob container from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "accountName"
+        },
+        {
+          "title": "Container Name",
+          "description": "Name of the container from which you want to retrieve the blob container from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "containerName"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the blob container from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "resourceGroupName"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the blob container from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "subscriptionId"
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "type": "",
+        "etag": "",
+        "properties": {
+          "publicAccess": "",
+          "leaseStatus": "",
+          "leaseState": "",
+          "lastModifiedTime": "",
+          "immutabilityPolicy": {
+            "etag": "",
+            "properties": {
+              "immutabilityPeriodSinceCreationInDays": "",
+              "state": ""
+            },
+            "updateHistory": [
+              {
+                "update": "",
+                "immutabilityPeriodSinceCreationInDays": "",
+                "timestamp": "",
+                "objectIdentifier": "",
+                "tenantId": ""
+              }
+            ]
+          },
+          "legalHold": {
+            "hasLegalHold": "",
+            "tags": [
+              {
+                "tag": "",
+                "timestamp": "",
+                "objectIdentifier": "",
+                "tenantId": ""
+              }
+            ]
+          },
+          "hasImmutabilityPolicy": "",
+          "hasLegalHold": ""
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Update Blob Container",
+      "operation": "update_blob_container",
+      "description": "Updates an existing blob container under the specified account in Azure Storage, based on the account name, container name and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "update_blob_container",
+      "parameters": [
+        {
+          "title": "Account Name",
+          "description": "Name of the account from which you want to update a blob container in Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "accountName"
+        },
+        {
+          "title": "Container Name",
+          "description": "Name of the container from which you want to update a blob container in Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "containerName"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to update a blob container in Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "resourceGroupName"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to update a blob container in Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "subscriptionId"
+        },
+        {
+          "title": "Additional Fields",
+          "name": "additional_fields",
+          "type": "json",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "(Optional) Additional fields that you want to update blob container in Azure Log Analytics.",
+          "description": "(Optional) Additional fields that you want to update blob container in Azure Log Analytics."
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "type": "",
+        "properties": {
+          "metadata": {
+          },
+          "publicAccess": "",
+          "hasImmutabilityPolicy": "",
+          "hasLegalHold": ""
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Delete Blob Container",
+      "operation": "delete_blob_container",
+      "description": "Deletes a specific blob container from Azure Storage, based on the account name, container name and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "delete_blob_container",
+      "parameters": [
+        {
+          "title": "Account Name",
+          "description": "Name of the account from which you want to delete the blob container from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "accountName"
+        },
+        {
+          "title": "Container Name",
+          "description": "Name of the container from which you want to delete the blob container from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "containerName"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to delete the blob container from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "resourceGroupName"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to delete the blob container from Azure Storage.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "subscriptionId"
+        }
+      ],
+      "output_schema": {
+        "result": ""
+      },
+      "enabled": true
+    }
+  ]
+}
+
