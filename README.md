@@ -10,8 +10,11 @@ You need to be both authenticated and authorized to access the Azure Storage API
 The following configuration parameters are required to authenticate the Azure Storage Connector with the Azure Storage API.
 
 •    Client ID
+
 •    Client Secret
+
 •    Tenant ID
+
 •    Redirect URI
 
 The following configuration parameter is required to authorize the Azure Storage Connector with the Azure Storage API.
