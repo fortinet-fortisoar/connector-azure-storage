@@ -1,8 +1,10 @@
 # connector-azure-storage
 
-Deploy and manage storage accounts and blob services. This integration facilitates the automated operations related to storage account, blob services and blob containers. This integration was integrated with version 2021-04-01 of Azure Storage.
+Deploy and manage storage accounts and blob services. This integration facilitates the automated operations related to storage account, blob services and blob containers.
 
 ## API Documentation Link: https://docs.microsoft.com/en-us/rest/api/storagerp/storage-accounts
+
+## API Version: 2021-04-01
 
 # Accessing the Azure Storage API
 
