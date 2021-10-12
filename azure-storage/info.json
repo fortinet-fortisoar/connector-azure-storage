@@ -9,7 +9,7 @@
   "cs_compatible": true,
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/azure-storage/170/azure-storage-v1-0-0",
   "configuration": {
     "fields": [
       {
@@ -29,7 +29,7 @@
         "visible": true,
         "type": "text",
         "name": "client_id",
-        "description": "Unique API ID of the Azure Active Directory application that is used to create an authentication token required to access the API."
+        "description": "Unique API ID of the Azure AD application that is used to create an authentication token required to access the API."
       },
       {
         "title": "Client Secret",
@@ -38,7 +38,7 @@
         "visible": true,
         "type": "password",
         "name": "client_secret",
-        "description": "Unique API Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see 'https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp'."
+        "description": "Unique API Secret of the Azure AD application that is used to create an authentication token required to access the API."
       },
       {
         "title": "Tenant ID",
@@ -47,7 +47,7 @@
         "visible": true,
         "type": "text",
         "name": "tenant_id",
-        "description": "ID of the tenant that you have been provided for your Azure Active Directory instance."
+        "description": "ID of the tenant that you have been provided for your Azure AD instance."
       },
       {
         "title": "Authorization Code",
@@ -56,19 +56,19 @@
         "visible": true,
         "type": "password",
         "name": "code",
-        "tooltip": "Authorization code that you acquired in the authorization step.",
-        "description": "(Only Applicable to On behalf of User – Delegate Permission) The authorization code that you acquired during the authorization step. For more information, see the Getting Access Tokens using the Delegate Permissions method section."
+        "tooltip": "The authorization code that you acquired during the authorization step. For more information, see Accessing the Azure Storage API.",
+        "description": "The authorization code that you acquired during the authorization step. For more information, see Accessing the Azure Storage API."
       },
       {
         "title": "Redirect URL",
-        "description": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri's you registered in the app registration portal.",
+        "description": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri you registered in the app registration portal.",
         "required": false,
         "editable": true,
         "visible": true,
         "type": "text",
         "name": "redirect_url",
         "placeholder": "E.g. https://localhost/myapp",
-        "tooltip": "(Only Applicable to On behalf of User – Delegate Permission) The redirect_uri of your app, where authentication responses can be sent and received by your app. The redirect URL that you specify here must exactly match one of the redirect_uri's you have registered in your app registration portal."
+        "tooltip": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri you registered in the app registration portal."
       },
       {
         "title": "Verify SSL",
@@ -78,7 +78,7 @@
         "type": "checkbox",
         "name": "verify_ssl",
         "value": true,
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not.\nBy default, this option is set as True."
       }
     ]
   },
@@ -92,7 +92,7 @@
       "parameters": [
         {
           "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the storage accounts from Azure Storage.",
+          "description": "Azure AD subscription ID from which you want to retrieve the storage accounts from Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -187,7 +187,7 @@
         },
         {
           "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the storage account from Azure Storage.",
+          "description": "Azure AD resource group from which you want to retrieve the storage account from Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -196,7 +196,7 @@
         },
         {
           "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the storage account from Azure Storage.",
+          "description": "Azure AD subscription ID from which you want to retrieve the storage account from Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -306,7 +306,7 @@
         },
         {
           "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to update a storage account in Azure Storage.",
+          "description": "Azure AD resource group from which you want to update a storage account in Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -315,7 +315,7 @@
         },
         {
           "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to update a storage account in Azure Storage.",
+          "description": "Azure AD subscription ID from which you want to update a storage account in Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -329,7 +329,7 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "(Optional) Additional fields that you want to update storage account in Azure Storage.",
+          "tooltip": "(Optional) Additional fields that you want to update storage in Azure Storage.",
           "description": "(Optional) Additional fields that you want to update storage in Azure Storage."
         }
       ],
@@ -392,7 +392,7 @@
         },
         {
           "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to delete the storage account from Azure Storage.",
+          "description": "Azure AD resource group from which you want to delete the storage account from Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -401,7 +401,7 @@
         },
         {
           "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to delete the storage account from Azure Storage.",
+          "description": "Azure AD subscription ID from which you want to delete the storage account from Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -432,7 +432,7 @@
         },
         {
           "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the blob services from Azure Storage.",
+          "description": "Azure AD resource group from which you want to retrieve the blob services from Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -441,7 +441,7 @@
         },
         {
           "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the blob services from Azure Storage.",
+          "description": "Azure AD subscription ID from which you want to retrieve the blob services from Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -492,7 +492,7 @@
     {
       "title": "Get Blob Service Properties",
       "operation": "get_blob_service_properties",
-      "description": "Retrieves information for a specific blob service properties from Azure Storage, based on the account name, blob service name and other input parameters you have specified.",
+      "description": "Retrieves information for a specific blob service properties from Azure Storage, based on the account name and other input parameters you have specified.",
       "category": "investigation",
       "annotation": "get_blob_service_properties",
       "parameters": [
@@ -507,7 +507,7 @@
         },
         {
           "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the blob service properties from Azure Storage.",
+          "description": "Azure AD resource group from which you want to retrieve the blob service properties from Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -516,7 +516,7 @@
         },
         {
           "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the blob service properties from Azure Storage.",
+          "description": "Azure AD subscription ID from which you want to retrieve the blob service properties from Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -563,7 +563,7 @@
     {
       "title": "Set Blob Service Properties",
       "operation": "set_blob_service_properties",
-      "description": "Sets the properties of a storage account’s Blob service in Azure Storage, based on the account name, blob service name and other input parameters you have specified.",
+      "description": "Sets the properties of a storage account’s Blob service in Azure Storage, based on the account name and other input parameters you have specified.",
       "category": "investigation",
       "annotation": "set_blob_service_properties",
       "parameters": [
@@ -578,7 +578,7 @@
         },
         {
           "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to set the blob service properties in Azure Storage.",
+          "description": "Azure AD resource group from which you want to set the blob service properties in Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -587,7 +587,7 @@
         },
         {
           "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to set the blob service properties in Azure Storage.",
+          "description": "Azure AD subscription ID from which you want to set the blob service properties in Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -648,7 +648,7 @@
         },
         {
           "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to create a blob container in Azure Storage.",
+          "description": "Azure AD resource group from which you want to create a blob container in Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -657,7 +657,7 @@
         },
         {
           "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to create a blob container in Azure Storage.",
+          "description": "Azure AD subscription ID from which you want to create a blob container in Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -671,8 +671,8 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "(Optional) Additional fields that you want to create blob container in Azure Log Analytics.",
-          "description": "(Optional) Additional fields that you want to create blob container in Azure Log Analytics."
+          "tooltip": "(Optional) Additional fields that you want to create blob container in Azure Storage.",
+          "description": "(Optional) Additional fields that you want to create blob container in Azure Storage."
         }
       ],
       "output_schema": {
@@ -700,7 +700,7 @@
         },
         {
           "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the blob containers from Azure Storage.",
+          "description": "Azure AD resource group from which you want to retrieve the blob containers from Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -709,7 +709,7 @@
         },
         {
           "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the blob containers from Azure Storage.",
+          "description": "Azure AD subscription ID from which you want to retrieve the blob containers from Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -794,7 +794,7 @@
         },
         {
           "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the blob container from Azure Storage.",
+          "description": "Azure AD resource group from which you want to retrieve the blob container from Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -803,7 +803,7 @@
         },
         {
           "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the blob container from Azure Storage.",
+          "description": "Azure AD subscription ID from which you want to retrieve the blob container from Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -881,7 +881,7 @@
         },
         {
           "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to update a blob container in Azure Storage.",
+          "description": "Azure AD resource group from which you want to update a blob container in Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -890,7 +890,7 @@
         },
         {
           "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to update a blob container in Azure Storage.",
+          "description": "Azure AD subscription ID from which you want to update a blob container in Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -904,8 +904,8 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "(Optional) Additional fields that you want to update blob container in Azure Log Analytics.",
-          "description": "(Optional) Additional fields that you want to update blob container in Azure Log Analytics."
+          "tooltip": "(Optional) Additional fields that you want to update blob container in Azure Storage.",
+          "description": "(Optional) Additional fields that you want to update blob container in Azure Storage."
         }
       ],
       "output_schema": {
@@ -949,7 +949,7 @@
         },
         {
           "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to delete the blob container from Azure Storage.",
+          "description": "Azure AD resource group from which you want to delete the blob container from Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -958,7 +958,7 @@
         },
         {
           "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to delete the blob container from Azure Storage.",
+          "description": "Azure AD subscription ID from which you want to delete the blob container from Azure Storage.",
           "required": true,
           "editable": true,
           "visible": true,
