@@ -9,17 +9,14 @@ Deploy and manage storage accounts and blob services. This integration facilitat
 You need to be both authenticated and authorized to access the Azure Storage APIs. The REST APIs of Azure Storage offers programmatic access to storage account, blob services, and blob containers.
 The following configuration parameters are required to authenticate the Azure Storage Connector with the Azure Storage API.
 
-•    Client ID
-
-•    Client Secret
-
-•    Tenant ID
-
-•    Redirect URI
+-- Client ID
+-- Client Secret
+-- Tenant ID
+-- Redirect URI
 
 The following configuration parameter is required to authorize the Azure Storage Connector with the Azure Storage API.
 
-•    Authorization Code
+-- Authorization Code
 
 You can follow the steps below to secure the authentication and authorization codes:
 
@@ -27,10 +24,10 @@ You can follow the steps below to secure the authentication and authorization co
 2.    Now that you have registered the application in Azure AD, you will have access to the following authentication codes: client ID, tenant ID, redirect URI, and client secret (after registering the app in Azure AD, you can generate the client secret.)
 Make a note of these authentication codes. In the Configurations tab of the connector, enter the authentication details in the following fields in order to authenticate the Azure Storage Connector with the Azure Storage API.
 
-o    In the Client ID field, enter the client ID
-o    In the Client Secret field, enter the client secret
-o    In the Tenant ID field, enter the tenant ID
-o    In the Redirect URL field, enter the redirect URI. By default, the redirect URI is set to https://localhost/myapp
+-- In the Client ID field, enter the client ID
+-- In the Client Secret field, enter the client secret
+-- In the Tenant ID field, enter the tenant ID
+-- In the Redirect URL field, enter the redirect URI. By default, the redirect URI is set to https://localhost/myapp
 
 Now that you have the authentication codes, you can use them to generate the authorization code.
 
