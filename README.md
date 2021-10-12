@@ -4,7 +4,7 @@ Deploy and manage storage accounts and blob services. This integration facilitat
 
 ## API Documentation Link: https://docs.microsoft.com/en-us/rest/api/storagerp/storage-accounts
 
-## API Version: 2021-04-01
+## Azure Storage API Version: 2021-04-01
 
 # Accessing the Azure Storage API
 
